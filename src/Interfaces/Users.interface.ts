@@ -5,6 +5,10 @@ export interface User {
   password: string,
 }
 
-export interface RegisteredUser extends User {
+export interface RegisteredUser {
   id: number,
+  username: string,
+  classe: string,
+  level: number,
+  password: string,
 }
