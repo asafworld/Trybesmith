@@ -22,4 +22,13 @@ export default class ProductModel {
     const { insertId } = insertedInfo;
     return { id: insertId, name, amount, orderId: null };
   }
+
+  public async getAll(): Promise<RegisteredProduct[] | null> {
+    const modelAnswer = await this.connection.execute('SELECT * FROM Trybesmith.Products');
+    if (!modelAnswer) {
+      return null;
+    }
+    const [products] = modelAnswer;
+    return products as RegisteredProduct[];
+  }
 }

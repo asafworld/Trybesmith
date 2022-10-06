@@ -16,4 +16,16 @@ export default class ProductController {
     }
     return res.status(201).json(serviceAnswer);
   };
+
+  getProducts = async (_req: Request, res: Response) => {
+    console.log('oi');
+    
+    const serviceAnswer = await this.service.getAllService();
+    console.log(serviceAnswer);
+    
+    if (!serviceAnswer) {
+      return res.status(404).end();
+    }
+    return res.status(200).json(serviceAnswer);
+  };
 }
