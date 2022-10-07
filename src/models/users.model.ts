@@ -22,4 +22,18 @@ export default class UserModel {
     const { insertId } = data;
     return { id: insertId, username, classe, level, password };
   }
+
+  public async getUser(id: number): Promise<RegisteredUser | null> {
+    const modelAnswer = await this.connection
+      .execute(
+        'SELECT * FROM Trybesmith.Users WHERE id = ?',
+        [id],
+      );
+    if (!modelAnswer) {
+      return null;
+    }
+    const [data] = modelAnswer;
+    const [user] = data as RegisteredUser[];
+    return user;
+  }
 }

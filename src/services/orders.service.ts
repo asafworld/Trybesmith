@@ -16,4 +16,12 @@ export default class OrderService {
     }
     return modelAnswer;
   }
+
+  public async createOrderService(userId: number): Promise<number | null> {
+    const modelAnswer = await this.model.create(userId);
+    if (!modelAnswer) {
+      return null;
+    }
+    return modelAnswer;
+  }
 }

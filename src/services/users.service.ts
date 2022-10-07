@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import connection from '../models/connection';
 import UserModel from '../models/users.model';
-import { User } from '../Interfaces/Users.interface';
+import { User, RegisteredUser } from '../Interfaces/Users.interface';
 
 dotenv.config();
 
@@ -23,5 +23,13 @@ export default class UserService {
     }
     const token = jwt.sign({ data: { id: model.id, username } }, secret);
     return token;
+  }
+
+  public async getUserById(id: number): Promise<RegisteredUser | null> {
+    const model = await this.model.getUser(id);
+    if (!model) {
+      return null;
+    }
+    return model;
   }
 }

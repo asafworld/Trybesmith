@@ -1,6 +1,7 @@
 import ProductModel from '../models/products.model';
 import connection from '../models/connection';
-import { Product, RegisteredProduct } from '../Interfaces/Products.interface';
+import { Product, RegisteredProduct,
+  UpdateOrders, Success } from '../Interfaces/Products.interface';
 
 export default class ProductService {
   public model: ProductModel;
@@ -16,6 +17,14 @@ export default class ProductService {
 
   public async getAllService(): Promise<RegisteredProduct[] | null> {
     const model = await this.model.getAll();
+    return model;
+  }
+
+  public async updOrServ({ productsIds, orderId, userId }: UpdateOrders): Promise<Success | null> {
+    const model = await this.model.updateOr({ productsIds, orderId, userId });
+    if (!model) {
+      return null;
+    }
     return model;
   }
 }
