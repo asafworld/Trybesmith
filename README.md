@@ -2,10 +2,6 @@
 
 Projeto destinado a gerência de um banco de dados de produtos artesanais e suas vendas.
 
-# Termos e acordos
-
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta e do Manual da Pessoa Estudante da Trybe.
-
 # Orientações
 
 Há duas opções: Rodando no Docker OU rodando localmente.
